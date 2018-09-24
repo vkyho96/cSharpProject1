@@ -21,3 +21,10 @@ C:\Users\dolla\Desktop\c#\Project 1\Project 1\obj\Debug\Project 1.csproj.Generat
 C:\Users\dolla\Desktop\c#\Project 1\Project 1\obj\Debug\Project 1.csproj.CoreCompileInputs.cache
 C:\Users\dolla\Desktop\c#\Project 1\Project 1\obj\Debug\Project 1.exe
 C:\Users\dolla\Desktop\c#\Project 1\Project 1\obj\Debug\Project 1.pdb
+C:\Users\thefirstgoldenage\Desktop\c#\cSharpProject1\Project 1\bin\Debug\Project 1.exe
+C:\Users\thefirstgoldenage\Desktop\c#\cSharpProject1\Project 1\bin\Debug\Project 1.pdb
+C:\Users\thefirstgoldenage\Desktop\c#\cSharpProject1\Project 1\obj\Debug\Project 1.csprojResolveAssemblyReference.cache
+C:\Users\thefirstgoldenage\Desktop\c#\cSharpProject1\Project 1\obj\Debug\Project_1.Properties.Resources.resources
+C:\Users\thefirstgoldenage\Desktop\c#\cSharpProject1\Project 1\obj\Debug\Project 1.csproj.GenerateResource.Cache
+C:\Users\thefirstgoldenage\Desktop\c#\cSharpProject1\Project 1\obj\Debug\Project 1.exe
+C:\Users\thefirstgoldenage\Desktop\c#\cSharpProject1\Project 1\obj\Debug\Project 1.pdb

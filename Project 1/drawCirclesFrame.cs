@@ -8,20 +8,22 @@ public class Drawcircleframe : Form
     private const int formheight = 1200; 
                                          
 
-    private const int upper_left_corner_x_coordinate = 100;
-    private const int upper_left_corner_y_coordinate = 80;
-    private const int rectangle_width = 1050;
-    private const int rectangle_height = 460;
-    private const int lower_right_corner_x_coordinate = upper_left_corner_x_coordinate + rectangle_width;
-    private const int lower_right_corner_y_coordinate = upper_left_corner_y_coordinate + rectangle_height;
-
     
     private Color current_color = Color.Yellow;
     private Color color_200 = Color.Yellow;
     private Color color_400 = Color.Yellow;
     private Color color_600 = Color.Yellow;
 
+    private Boolean radius_200 = false;
+    private Boolean radius_400 = false;
+    private Boolean radius_600 = false;
+
+ 
     private int radius = 0;
+    private int radius_1 = 0;
+    private int radius_2 = 0;
+    private int radius_3 = 0;
+
 
 
     Pen my_Pen = new Pen(Color.White, 3);
@@ -292,14 +294,10 @@ public class Drawcircleframe : Form
 
     protected void erase_btn_onMouseEnter(object sender, EventArgs events)
     {
-
         //erasebutton.Font = new Font(" ", 12, FontStyle.Underline);
-        
         base.OnMouseEnter(events);
         erase_btn.BackColor = Color.White;
         erase_btn.ForeColor = Color.Orange;
-
-
     }
 
     protected void erase_btn_onMouseLeave(object sender, EventArgs events)
@@ -307,8 +305,6 @@ public class Drawcircleframe : Form
         base.OnMouseEnter(events);
         erase_btn.BackColor = Color.Orange;
         erase_btn.ForeColor = Color.White;
- 
-
     }
 
 
@@ -335,14 +331,17 @@ public class Drawcircleframe : Form
     protected void radius_btn_s_clicked(Object sender, EventArgs events)
     {
         radius = 200;
+        radius_1 = 200;
     }
     protected void radius_btn_m_clicked(Object sender, EventArgs events)
     {
         radius = 400;
+        radius_2 = 400;
     }
     protected void radius_btn_l_clicked(Object sender, EventArgs events)
     {
         radius = 600;
+        radius_3 = 600;
     }
 
 
@@ -367,21 +366,9 @@ public class Drawcircleframe : Form
         }
         graphicShow = true;
         Invalidate();
-        Console.WriteLine("200: " + color_200 + "400: " + color_400  + "600: " + color_600);
+      
     }
 
-
-
-    /*
-
-    protected void showrectangle(Object sender, EventArgs events)
-    {
-        Drawfunction();
-        rectanglevisible = true;
-        Invalidate();
-        System.Console.WriteLine("You clicked on the Draw button.");
-    }
-    */
 
     protected void eraseCircles(Object sender, EventArgs events)
     {
@@ -411,35 +398,29 @@ public class Drawcircleframe : Form
 
         if (graphicShow)
         {
-
-            if (radius == 200)
-            {
-                Rectangle rect_info = Circle_algorithms.getcircleinfo(formwidth, formheight, radius);
+               
+                Rectangle rect_1 = new Rectangle();
+                rect_1 = Circle_algorithms.getcircleinfo(formwidth, formheight, radius_1);
                 my_Pen.Color = color_200;
-                graph.DrawEllipse(my_Pen, rect_info);
-            }
+                graph.DrawEllipse(my_Pen, rect_1);
 
-            if (radius == 400)
-            {
-                Rectangle rect_info2 = Circle_algorithms.getcircleinfo(formwidth, formheight, radius);
+            
+                Rectangle rect_2 = new Rectangle();
+                rect_2 = Circle_algorithms.getcircleinfo(formwidth, formheight, radius_2);
                 my_Pen.Color = color_400;
-                graph.DrawEllipse(my_Pen, rect_info2);
-            }
+                graph.DrawEllipse(my_Pen, rect_2);
 
-            if (radius == 600)
-            {
-                Rectangle rect_info3 = Circle_algorithms.getcircleinfo(formwidth, formheight, radius);
+
+                Rectangle rect_3 = new Rectangle();
+                rect_3 = Circle_algorithms.getcircleinfo(formwidth, formheight, radius_3);
                 my_Pen.Color = color_600;
-                graph.DrawEllipse(my_Pen, rect_info3);
-            }
+                graph.DrawEllipse(my_Pen, rect_3);
+            
         }
       
         base.OnPaint(e);
+       
     }
-
-
-
-
 
 
 
