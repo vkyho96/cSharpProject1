@@ -4,8 +4,8 @@ using System.Windows.Forms;
 
 public class Drawcircleframe : Form
 {
-    private const int formwidth = 1600; 
-    private const int formheight = 900; 
+    private const int formwidth = 1920; 
+    private const int formheight = 1200; 
                                          
 
     private const int upper_left_corner_x_coordinate = 100;
@@ -25,16 +25,14 @@ public class Drawcircleframe : Form
 
 
     Pen my_Pen = new Pen(Color.White, 3);
-   
+    
     
 
     private Label title = new Label();
     private Font myFont = new Font("Comic Sans MS", 24, FontStyle.Regular);
 
 
-    //booleans
-    private Boolean color_bool = false;
-    private Boolean radius_bool = false;
+
 
 
     // Create rectangle for ellipse.
@@ -58,30 +56,30 @@ public class Drawcircleframe : Form
 
 
  
-    private bool rectanglevisible = false;
+    private bool graphicShow = false;
 
     private Label label1 = new Label();
 
     
 
     //Locations
-    private Point location_of_title = new Point(520, 100);
+    private Point location_of_title = new Point(800, 50);
 
 
     
-    private Point location_of_draw_button = new Point(980, 600);
-    private Point location_of_erase_button = new Point(980, 650);
-    private Point location_of_quit_button = new Point(980, 700);
+   
 
-    private Point location_of_red_button = new Point(150, 600);
-    private Point location_of_green_button = new Point(150, 650);
-    private Point location_of_blue_button = new Point(150, 700);
+    private Point location_of_red_button = new Point(650, 950);
+    private Point location_of_green_button = new Point(650, 1000);
+    private Point location_of_blue_button = new Point(650, 1050);
 
-    private Point location_of_radius_button_s = new Point(550, 600);
-    private Point location_of_radius_button_m = new Point(550, 650);
-    private Point location_of_radius_button_l = new Point(550, 700);
+    private Point location_of_radius_button_s = new Point(850, 950);
+    private Point location_of_radius_button_m = new Point(850, 1000);
+    private Point location_of_radius_button_l = new Point(850, 1050);
 
-
+    private Point location_of_draw_button = new Point(1050, 950);
+    private Point location_of_erase_button = new Point(1050, 1000);
+    private Point location_of_quit_button = new Point(1050, 1050);
 
     //hex color
     //Color mygreen = ColorTranslator.FromHtml("#44FFBF"); 
@@ -229,7 +227,7 @@ public class Drawcircleframe : Form
 
 
         draw_btn.Click += new EventHandler(Drawfunction);
-        erase_btn.Click += new EventHandler(eraserectangle);
+        erase_btn.Click += new EventHandler(eraseCircles);
         quit_btn.Click += new EventHandler(exitfromthisprogram);
 
 
@@ -245,13 +243,6 @@ public class Drawcircleframe : Form
     }//End of constructor
 
  
-
-
-
-
-
-
-
 
 
 
@@ -374,6 +365,7 @@ public class Drawcircleframe : Form
                 Console.WriteLine("Err, switch statement");
                 break;
         }
+        graphicShow = true;
         Invalidate();
         Console.WriteLine("200: " + color_200 + "400: " + color_400  + "600: " + color_600);
     }
@@ -391,9 +383,9 @@ public class Drawcircleframe : Form
     }
     */
 
-    protected void eraserectangle(Object sender, EventArgs events)
+    protected void eraseCircles(Object sender, EventArgs events)
     {
-        rectanglevisible = false;
+        graphicShow = false;
         Invalidate();
         System.Console.WriteLine("You clicked on the Erase button.");
 
@@ -412,24 +404,37 @@ public class Drawcircleframe : Form
 
 
 
-    protected override void OnPaint(PaintEventArgs ee)
+    protected override void OnPaint(PaintEventArgs e)
     {
         
-        Graphics graph = ee.Graphics;
-        //graph.DrawLine(ballpointpen, upper_left_corner_x_coordinate, upper_left_corner_y_coordinate, lower_right_corner_x_coordinate, lower_right_corner_y_coordinate);
-        // graph.FillRectangle(Brushes.Yellow, 0, 620, formwidth, 73);  //Output a yellow horizontal band at the bottom of the window.
-        if (rectanglevisible) graph.DrawEllipse(my_Pen, rect);
-        //In fact, it calls the method with the same name located in the super class.
+        Graphics graph = e.Graphics;
 
-        Rectangle rect_info = Circle_algorithms.getcircleinfo(formwidth, formheight, radius);
-        ///area.DrawEllipse(pen, x, y, z, w)
+        if (graphicShow)
+        {
 
+            if (radius == 200)
+            {
+                Rectangle rect_info = Circle_algorithms.getcircleinfo(formwidth, formheight, radius);
+                my_Pen.Color = color_200;
+                graph.DrawEllipse(my_Pen, rect_info);
+            }
 
-        graph.DrawEllipse(my_Pen, rect_info);
+            if (radius == 400)
+            {
+                Rectangle rect_info2 = Circle_algorithms.getcircleinfo(formwidth, formheight, radius);
+                my_Pen.Color = color_400;
+                graph.DrawEllipse(my_Pen, rect_info2);
+            }
 
-        
-
-        base.OnPaint(ee);
+            if (radius == 600)
+            {
+                Rectangle rect_info3 = Circle_algorithms.getcircleinfo(formwidth, formheight, radius);
+                my_Pen.Color = color_600;
+                graph.DrawEllipse(my_Pen, rect_info3);
+            }
+        }
+      
+        base.OnPaint(e);
     }
 
 

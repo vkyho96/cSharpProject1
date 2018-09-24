@@ -13,3 +13,11 @@ E:\Project 1\Project 1\obj\Debug\Project 1.exe
 E:\Project 1\Project 1\obj\Debug\Project 1.pdb
 E:\Project 1\Project 1\bin\Debug\Project 1.exe
 E:\Project 1\Project 1\bin\Debug\Project 1.pdb
+C:\Users\dolla\Desktop\c#\Project 1\Project 1\bin\Debug\Project 1.exe
+C:\Users\dolla\Desktop\c#\Project 1\Project 1\bin\Debug\Project 1.pdb
+C:\Users\dolla\Desktop\c#\Project 1\Project 1\obj\Debug\Project 1.csprojAssemblyReference.cache
+C:\Users\dolla\Desktop\c#\Project 1\Project 1\obj\Debug\Project_1.Properties.Resources.resources
+C:\Users\dolla\Desktop\c#\Project 1\Project 1\obj\Debug\Project 1.csproj.GenerateResource.cache
+C:\Users\dolla\Desktop\c#\Project 1\Project 1\obj\Debug\Project 1.csproj.CoreCompileInputs.cache
+C:\Users\dolla\Desktop\c#\Project 1\Project 1\obj\Debug\Project 1.exe
+C:\Users\dolla\Desktop\c#\Project 1\Project 1\obj\Debug\Project 1.pdb
