@@ -4,11 +4,12 @@ using System.Windows.Forms;
 
 public class Drawcircleframe : Form
 {
-    private const int formwidth = 1600; 
-    private const int formheight = 900; 
-                                         
+    private const int formwidth = 1600;
+    private const int formheight = 900;
 
-    
+    private Label label_color = new Label();
+
+
     private Color current_color = Color.Yellow;
     private Color color_200 = Color.Yellow;
     private Color color_400 = Color.Yellow;
@@ -21,7 +22,7 @@ public class Drawcircleframe : Form
 
 
     //hex color
-    //Color mygreen = ColorTranslator.FromHtml("#44FFBF"); 
+    //Color mygreen = ColorTranslator.FromHtml("#44FFBF");
 
     private Color myBlue = Color.FromArgb(0, 191, 255);
     private Color mygreen = Color.FromArgb(153, 204, 51);
@@ -33,7 +34,7 @@ public class Drawcircleframe : Form
     private Color backgroundColor_btn = Color.FromArgb(64, 107, 128);
 
     Pen my_Pen = new Pen(Color.White, 3);
-    
+
     private Label title = new Label();
     private Font myFont = new Font("Comic Sans MS", 24, FontStyle.Regular);
 
@@ -58,16 +59,17 @@ public class Drawcircleframe : Form
     private Button radius_btn_l = new Button();
 
 
- 
+
     private bool graphicShow = false;
 
     private Label label1 = new Label();
 
-    
+
 
     //Locations
-    private Point location_of_title = new Point(675, 100);
+    private Point location_of_title = new Point(500, 100);
 
+    private Point location_of_label_color = new Point(550, 650);
     private Point location_of_red_button = new Point(550, 700);
     private Point location_of_green_button = new Point(550, 750);
     private Point location_of_blue_button = new Point(550, 800);
@@ -80,7 +82,8 @@ public class Drawcircleframe : Form
     private Point location_of_erase_button = new Point(950, 750);
     private Point location_of_quit_button = new Point(950, 800);
 
- 
+
+
 
 
 
@@ -153,6 +156,14 @@ public class Drawcircleframe : Form
         quit_btn.BackColor = Color.Purple;
         erase_btn.ForeColor = Color.White;
 
+        label_color.Text = "Select Color";
+        label_color.Size = new Size(150, 50);
+        label_color = location_of_label_color ;
+        label_color = myFont;
+        label_color.BackColor = backgroundColor_btn;
+        label_color.ForeColor = Color.White;
+
+
     }
 
 
@@ -167,10 +178,10 @@ public class Drawcircleframe : Form
         BackColor = backgroundColor;
 
 
-        title.Text = "Drawing Circles";
+        title.Text = "Drawing Circles by Van Ho";
         title.ForeColor = System.Drawing.Color.FromArgb(255, 255, 255);
         title.Font = new System.Drawing.Font("Arial", 24, FontStyle.Bold);
-        title.Size = new Size(300, 60);
+        title.Size = new Size(400, 60);
         title.Location = location_of_title;
         //title.BackColor = Color.Cyan;
 
@@ -191,12 +202,12 @@ public class Drawcircleframe : Form
         Controls.Add(radius_btn_s);
         Controls.Add(radius_btn_m);
         Controls.Add(radius_btn_l);
-    
+
         Controls.Add(draw_btn);
         Controls.Add(erase_btn);
         Controls.Add(quit_btn);
 
-   
+
 
         System.Windows.Forms.ToolTip ToolTip1 = new System.Windows.Forms.ToolTip();
         ToolTip1.SetToolTip(this.quit_btn, "Quit Program");
@@ -231,7 +242,7 @@ public class Drawcircleframe : Form
 
     }//End of constructor
 
- 
+
 
 
 
@@ -353,7 +364,7 @@ public class Drawcircleframe : Form
         }
         graphicShow = true;
         Invalidate();
-      
+
     }
 
 
@@ -380,7 +391,7 @@ public class Drawcircleframe : Form
 
     protected override void OnPaint(PaintEventArgs e)
     {
-        
+
         Graphics graph = e.Graphics;
         SolidBrush myBrush = new SolidBrush(backgroundColor_btn);
 
@@ -393,7 +404,7 @@ public class Drawcircleframe : Form
                 my_Pen.Color = color_200;
                 graph.DrawEllipse(my_Pen, rect_1);
 
-            
+
                 Rectangle rect_2 = new Rectangle();
                 rect_2 = Circle_algorithms.getcircleinfo(formwidth, formheight, radius_2);
                 my_Pen.Color = color_400;
@@ -404,11 +415,11 @@ public class Drawcircleframe : Form
                 rect_3 = Circle_algorithms.getcircleinfo(formwidth, formheight, radius_3);
                 my_Pen.Color = color_600;
                 graph.DrawEllipse(my_Pen, rect_3);
-            
+
         }
-      
+
         base.OnPaint(e);
-       
+
     }
 
 

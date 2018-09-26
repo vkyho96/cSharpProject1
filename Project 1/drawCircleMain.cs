@@ -1,7 +1,7 @@
 ﻿
 
 using System;
-using System.Windows.Forms;    
+using System.Windows.Forms;
 public class Drawrectanglemain
 {
     public static void Main()
@@ -11,4 +11,4 @@ public class Drawrectanglemain
         Application.Run(application);
         System.Console.WriteLine("This graphics program has ended.  Bye.");
     }//End of Main function
-}//End of Drawrectanglemain 
+}//End of Drawrectanglemain
