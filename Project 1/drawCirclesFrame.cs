@@ -4,8 +4,8 @@ using System.Windows.Forms;
 
 public class Drawcircleframe : Form
 {
-    private const int formwidth = 1920; 
-    private const int formheight = 1200; 
+    private const int formwidth = 1600; 
+    private const int formheight = 900; 
                                          
 
     
@@ -14,32 +14,33 @@ public class Drawcircleframe : Form
     private Color color_400 = Color.Yellow;
     private Color color_600 = Color.Yellow;
 
-    private Boolean radius_200 = false;
-    private Boolean radius_400 = false;
-    private Boolean radius_600 = false;
-
- 
     private int radius = 0;
     private int radius_1 = 0;
     private int radius_2 = 0;
     private int radius_3 = 0;
 
 
+    //hex color
+    //Color mygreen = ColorTranslator.FromHtml("#44FFBF"); 
+
+    private Color myBlue = Color.FromArgb(0, 191, 255);
+    private Color mygreen = Color.FromArgb(153, 204, 51);
+    //Color backgroundColor = Color.FromArgb(16, 16, 16);
+    //private Color backgroundColor = Color.FromArgb(14, 47, 68);
+    private Color backgroundColor = Color.FromArgb(57, 96, 115);
+    //(153,204,51)
+
+    private Color backgroundColor_btn = Color.FromArgb(64, 107, 128);
 
     Pen my_Pen = new Pen(Color.White, 3);
     
-    
-
     private Label title = new Label();
     private Font myFont = new Font("Comic Sans MS", 24, FontStyle.Regular);
 
 
 
-
-
     // Create rectangle for ellipse.
     Rectangle rect = new Rectangle(500, 0, 200, 200);
-
 
 
 
@@ -65,35 +66,21 @@ public class Drawcircleframe : Form
     
 
     //Locations
-    private Point location_of_title = new Point(800, 50);
+    private Point location_of_title = new Point(675, 100);
 
+    private Point location_of_red_button = new Point(550, 700);
+    private Point location_of_green_button = new Point(550, 750);
+    private Point location_of_blue_button = new Point(550, 800);
 
-    
-   
+    private Point location_of_radius_button_s = new Point(750, 700);
+    private Point location_of_radius_button_m = new Point(750, 750);
+    private Point location_of_radius_button_l = new Point(750, 800);
 
-    private Point location_of_red_button = new Point(650, 950);
-    private Point location_of_green_button = new Point(650, 1000);
-    private Point location_of_blue_button = new Point(650, 1050);
+    private Point location_of_draw_button = new Point(950, 700);
+    private Point location_of_erase_button = new Point(950, 750);
+    private Point location_of_quit_button = new Point(950, 800);
 
-    private Point location_of_radius_button_s = new Point(850, 950);
-    private Point location_of_radius_button_m = new Point(850, 1000);
-    private Point location_of_radius_button_l = new Point(850, 1050);
-
-    private Point location_of_draw_button = new Point(1050, 950);
-    private Point location_of_erase_button = new Point(1050, 1000);
-    private Point location_of_quit_button = new Point(1050, 1050);
-
-    //hex color
-    //Color mygreen = ColorTranslator.FromHtml("#44FFBF"); 
-
-    private Color myBlue = Color.FromArgb(0, 191, 255);
-    private Color mygreen = Color.FromArgb(153, 204, 51);
-    //Color backgroundColor = Color.FromArgb(16, 16, 16);
-    //private Color backgroundColor = Color.FromArgb(14, 47, 68);
-    private Color backgroundColor = Color.FromArgb(17,1,26);
-    //(153,204,51)
-
-
+ 
 
 
 
@@ -395,10 +382,12 @@ public class Drawcircleframe : Form
     {
         
         Graphics graph = e.Graphics;
+        SolidBrush myBrush = new SolidBrush(backgroundColor_btn);
+
+        graph.FillRectangle(myBrush, 450, 675, 750, 350);
 
         if (graphicShow)
         {
-               
                 Rectangle rect_1 = new Rectangle();
                 rect_1 = Circle_algorithms.getcircleinfo(formwidth, formheight, radius_1);
                 my_Pen.Color = color_200;
