@@ -32,7 +32,7 @@ echo "Compile drawCirclesFrame.cs and link the previously created dll file(s)."
 mcs -target:library -r:System.Windows.Forms.dll -r:System.Drawing.dll -r:drawcirclealgorithm.dll -out:drawCirclesFrame.dll drawCirclesFrame.cs
 
 echo "Compile drawCircleMain.cs and link the previously created dll file(s) to create an executable file."
-mcs -r:System.Windows.Forms.dll -r:System.Drawing.dll -r:circlealgorithm.dll -r:drawCirclesFrame.dll -out:drawCircle.exe drawCircleMain.cs
+mcs -r:System.Windows.Forms.dll -r:System.Drawing.dll -r:drawcirclealgorithm.dll -r:drawCirclesFrame.dll -out:drawCircle.exe drawCircleMain.cs
 
 echo "View the list of files in the current folder"
 ls -l
