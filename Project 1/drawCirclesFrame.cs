@@ -1,19 +1,42 @@
-﻿using System;
+﻿/*
+ Program name: Draw Circle (assignment 1)
+ Author: Van Ho
+ Email: thefirstgoldenage@csu.fullerton.edu
+ Language: C#
+ Date of Development: 09-10-2018  -  09-30-2018
+
+ Purpose of program: draw circle with selected radius.
+ Features: 3 colors: Red, Green, Blue
+           3 radius: 200, 400, 600
+           Actions: Draw, Erase, Quit
+
+ File Name: drawCircleFrame.cs
+ File Discription: This file builds the graphical interface of the program
+ Issue: NONE
+ Progress: COMPLETE
+ Comment: might remove button hover
+
+ How to run:
+ In the terminal, past this command: 'sh build.sh'
+ */
+
+
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
 public class Drawcircleframe : Form
-{
+{   
+    //application size
     private const int formwidth = 1600;
     private const int formheight = 900;
 
+    //string labels
     private Label label_color = new Label();
-
-
-    private Color current_color = Color.Yellow;
-    private Color color_200 = Color.Yellow;
-    private Color color_400 = Color.Yellow;
-    private Color color_600 = Color.Yellow;
+    private Label label_radius = new Label();
+    private Label label_action = new Label();
+    
+    private Label title = new Label();
 
     private int radius = 0;
     private int radius_1 = 0;
@@ -21,23 +44,22 @@ public class Drawcircleframe : Form
     private int radius_3 = 0;
 
 
-    //hex color
-    //Color mygreen = ColorTranslator.FromHtml("#44FFBF");
+    private Color current_color = Color.Yellow;
+    private Color color_200 = Color.Yellow;
+    private Color color_400 = Color.Yellow;
+    private Color color_600 = Color.Yellow;
 
     private Color myBlue = Color.FromArgb(0, 191, 255);
     private Color mygreen = Color.FromArgb(153, 204, 51);
-    //Color backgroundColor = Color.FromArgb(16, 16, 16);
-    //private Color backgroundColor = Color.FromArgb(14, 47, 68);
     private Color backgroundColor = Color.FromArgb(57, 96, 115);
-    //(153,204,51)
 
     private Color backgroundColor_btn = Color.FromArgb(64, 107, 128);
 
+    //utility 
     Pen my_Pen = new Pen(Color.White, 3);
-
-    private Label title = new Label();
+    private Font font_large = new Font("Comic Sans MS", 36, FontStyle.Regular);
     private Font myFont = new Font("Comic Sans MS", 24, FontStyle.Regular);
-
+    private Font font_small = new Font("Comic Sans MS", 16, FontStyle.Regular);
 
 
     // Create rectangle for ellipse.
@@ -59,25 +81,26 @@ public class Drawcircleframe : Form
     private Button radius_btn_l = new Button();
 
 
-
+    //helpers
     private bool graphicShow = false;
-
-    private Label label1 = new Label();
+    //private Label label1 = new Label();
 
 
 
     //Locations
-    private Point location_of_title = new Point(500, 100);
+    private Point location_of_title = new Point(500, 80);
 
     private Point location_of_label_color = new Point(550, 650);
     private Point location_of_red_button = new Point(550, 700);
     private Point location_of_green_button = new Point(550, 750);
     private Point location_of_blue_button = new Point(550, 800);
 
+    private Point location_of_label_radius = new Point(750, 650);
     private Point location_of_radius_button_s = new Point(750, 700);
     private Point location_of_radius_button_m = new Point(750, 750);
     private Point location_of_radius_button_l = new Point(750, 800);
 
+    private Point location_of_label_action = new Point(950, 650);
     private Point location_of_draw_button = new Point(950, 700);
     private Point location_of_erase_button = new Point(950, 750);
     private Point location_of_quit_button = new Point(950, 800);
@@ -89,7 +112,9 @@ public class Drawcircleframe : Form
 
     public void make_btn()
     {
-        //color buttons
+        /* CUSTOMIZATION*/
+
+        //color buttons 
         red_btn.Text = "Red";
         red_btn.Size = new Size(150, 50);
         red_btn.Location = location_of_red_button;
@@ -134,7 +159,7 @@ public class Drawcircleframe : Form
         radius_btn_l.BackColor = mygreen;
         radius_btn_l.ForeColor = Color.White;
 
-        //Utility buttons
+        //Action buttons
         draw_btn.Text = "Draw";
         draw_btn.Size = new Size(150, 50);
         draw_btn.Location = location_of_draw_button;
@@ -158,11 +183,24 @@ public class Drawcircleframe : Form
 
         label_color.Text = "Select Color";
         label_color.Size = new Size(150, 50);
-        label_color = location_of_label_color ;
-        label_color = myFont;
+        label_color.Location = location_of_label_color;
+        label_color.Font = font_small;
         label_color.BackColor = backgroundColor_btn;
         label_color.ForeColor = Color.White;
 
+        label_radius.Text = "Select Radius";
+        label_radius.Size = new Size(150, 50);
+        label_radius.Location = location_of_label_radius;
+        label_radius.Font = font_small;
+        label_radius.BackColor = backgroundColor_btn;
+        label_radius.ForeColor = Color.White;
+
+        label_action.Text = "Select Action";
+        label_action.Size = new Size(150, 50);
+        label_action.Location = location_of_label_action;
+        label_action.Font = font_small;
+        label_action.BackColor = backgroundColor_btn;
+        label_action.ForeColor = Color.White;
 
     }
 
@@ -170,8 +208,7 @@ public class Drawcircleframe : Form
 
     public Drawcircleframe()   //The constructor of this class
     {  //Set the title of this form.
-        Text = "How to draw a rectangle.  But how do you draw a circle?";
-        System.Console.WriteLine("formwidth = {0}. formheight = {1}.", formwidth, formheight);
+        Text = "Draw circles";
         //Set the initial size of this form
         Size = new Size(formwidth, formheight);
         //Set the background color of this form
@@ -180,57 +217,46 @@ public class Drawcircleframe : Form
 
         title.Text = "Drawing Circles by Van Ho";
         title.ForeColor = System.Drawing.Color.FromArgb(255, 255, 255);
-        title.Font = new System.Drawing.Font("Arial", 24, FontStyle.Bold);
-        title.Size = new Size(400, 60);
+        title.Font = font_large;
+        title.Size = new Size(700, 80);
         title.Location = location_of_title;
-        //title.BackColor = Color.Cyan;
-
-
-
+    
         make_btn();
-
 
         my_Pen.Color = Color.Green;
 
-
-
+        // display
         Controls.Add(title);
+
+        Controls.Add(label_color);
         Controls.Add(red_btn);
         Controls.Add(blue_btn);
         Controls.Add(green_btn);
 
+        Controls.Add(label_radius);
         Controls.Add(radius_btn_s);
         Controls.Add(radius_btn_m);
         Controls.Add(radius_btn_l);
 
+        Controls.Add(label_action);
         Controls.Add(draw_btn);
         Controls.Add(erase_btn);
         Controls.Add(quit_btn);
 
 
-
-        System.Windows.Forms.ToolTip ToolTip1 = new System.Windows.Forms.ToolTip();
-        ToolTip1.SetToolTip(this.quit_btn, "Quit Program");
-
-
+        //  BUTTON HANGLERS DECLARATION
         red_btn.MouseEnter += new EventHandler(red_btn_onMouseEnter);
         red_btn.MouseLeave += new EventHandler(red_btn_onMouseLeave);
-
         blue_btn.MouseEnter += new EventHandler(blue_btn_onMouseEnter);
         blue_btn.MouseLeave += new EventHandler(blue_btn_onMouseLeave);
-
         green_btn.MouseEnter += new EventHandler(green_btn_onMouseEnter);
         green_btn.MouseLeave += new EventHandler(green_btn_onMouseLeave);
-
         erase_btn.MouseEnter += new EventHandler(erase_btn_onMouseEnter);
         erase_btn.MouseLeave += new EventHandler(erase_btn_onMouseLeave);
-
 
         draw_btn.Click += new EventHandler(Drawfunction);
         erase_btn.Click += new EventHandler(eraseCircles);
         quit_btn.Click += new EventHandler(exitfromthisprogram);
-
-
         red_btn.Click += new EventHandler(red_btn_clicked);
         blue_btn.Click += new EventHandler(blue_btn_clicked);
         green_btn.Click += new EventHandler(green_btn_clicked);
@@ -292,7 +318,6 @@ public class Drawcircleframe : Form
 
     protected void erase_btn_onMouseEnter(object sender, EventArgs events)
     {
-        //erasebutton.Font = new Font(" ", 12, FontStyle.Underline);
         base.OnMouseEnter(events);
         erase_btn.BackColor = Color.White;
         erase_btn.ForeColor = Color.Orange;
@@ -344,7 +369,7 @@ public class Drawcircleframe : Form
 
 
 
-
+    // assign selected color to color varible corresonding to a specific radius
     protected void Drawfunction(object sender, EventArgs param)
     {
         switch (radius)
@@ -372,21 +397,13 @@ public class Drawcircleframe : Form
     {
         graphicShow = false;
         Invalidate();
-        System.Console.WriteLine("You clicked on the Erase button.");
-
-        //MessageBox.Show("Version 1.0.0");
-
-
-    }//End of method eraserectangle
+    }
 
     protected void exitfromthisprogram(Object sender, EventArgs events)
     {
-        System.Console.WriteLine("This program will end execution.");
+        System.Console.WriteLine("Program ended.");
         Close();
     }
-
-
-
 
 
     protected override void OnPaint(PaintEventArgs e)
@@ -395,7 +412,7 @@ public class Drawcircleframe : Form
         Graphics graph = e.Graphics;
         SolidBrush myBrush = new SolidBrush(backgroundColor_btn);
 
-        graph.FillRectangle(myBrush, 450, 675, 750, 350);
+        graph.FillRectangle(myBrush, 450, 625, 750, 350);
 
         if (graphicShow)
         {
@@ -417,11 +434,6 @@ public class Drawcircleframe : Form
                 graph.DrawEllipse(my_Pen, rect_3);
 
         }
-
         base.OnPaint(e);
-
     }
-
-
-
-}//End of class Drawrectangleframe
+}//End of class 
