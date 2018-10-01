@@ -58,7 +58,7 @@ public class Drawcircleframe : Form
     //utility 
     Pen my_Pen = new Pen(Color.White, 3);
     private Font font_large = new Font("Comic Sans MS", 36, FontStyle.Regular);
-    private Font myFont = new Font("Comic Sans MS", 24, FontStyle.Regular);
+    private Font font_medium = new Font("Comic Sans MS", 24, FontStyle.Regular);
     private Font font_small = new Font("Comic Sans MS", 16, FontStyle.Regular);
 
 
@@ -118,21 +118,21 @@ public class Drawcircleframe : Form
         red_btn.Text = "Red";
         red_btn.Size = new Size(150, 50);
         red_btn.Location = location_of_red_button;
-        red_btn.Font = myFont;
+        red_btn.Font = font_medium;
         red_btn.BackColor = Color.Red;
         red_btn.ForeColor = Color.White;
 
         blue_btn.Text = "Blue";
         blue_btn.Size = new Size(150, 50);
         blue_btn.Location = location_of_blue_button;
-        blue_btn.Font = myFont;
+        blue_btn.Font = font_medium;
         blue_btn.BackColor = myBlue;
         blue_btn.ForeColor = Color.White;
 
         green_btn.Text = "Green";
         green_btn.Size = new Size(150, 50);
         green_btn.Location = location_of_green_button;
-        green_btn.Font = myFont;
+        green_btn.Font = font_medium;
         green_btn.BackColor = mygreen;
         green_btn.ForeColor = Color.White;
 
@@ -141,21 +141,21 @@ public class Drawcircleframe : Form
         radius_btn_s.Text = "200";
         radius_btn_s.Size = new Size(150, 50);
         radius_btn_s.Location = location_of_radius_button_s;
-        radius_btn_s.Font = myFont;
+        radius_btn_s.Font = font_medium;
         radius_btn_s.BackColor = Color.Red;
         radius_btn_s.ForeColor = Color.White;
 
         radius_btn_m.Text = "400";
         radius_btn_m.Size = new Size(150, 50);
         radius_btn_m.Location = location_of_radius_button_m;
-        radius_btn_m.Font = myFont;
+        radius_btn_m.Font = font_medium;
         radius_btn_m.BackColor = myBlue;
         radius_btn_m.ForeColor = Color.White;
 
         radius_btn_l.Text = "600";
         radius_btn_l.Size = new Size(150, 50);
         radius_btn_l.Location = location_of_radius_button_l;
-        radius_btn_l.Font = myFont;
+        radius_btn_l.Font = font_medium;
         radius_btn_l.BackColor = mygreen;
         radius_btn_l.ForeColor = Color.White;
 
@@ -163,21 +163,21 @@ public class Drawcircleframe : Form
         draw_btn.Text = "Draw";
         draw_btn.Size = new Size(150, 50);
         draw_btn.Location = location_of_draw_button;
-        draw_btn.Font = myFont;
+        draw_btn.Font = font_medium;
         draw_btn.BackColor = Color.DodgerBlue;
         draw_btn.ForeColor = Color.White;
 
         erase_btn.Text = "Erase";
         erase_btn.Size = new Size(150, 50);
         erase_btn.Location = location_of_erase_button;
-        erase_btn.Font = myFont;
+        erase_btn.Font = font_medium;
         erase_btn.BackColor = Color.Orange;
         erase_btn.ForeColor = Color.White;
 
         quit_btn.Text = "Exit";
         quit_btn.Size = new Size(150, 50);
         quit_btn.Location = location_of_quit_button;
-        quit_btn.Font = myFont;
+        quit_btn.Font = font_medium;
         quit_btn.BackColor = Color.Purple;
         erase_btn.ForeColor = Color.White;
 

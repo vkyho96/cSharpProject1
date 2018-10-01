@@ -17,6 +17,7 @@
 #  This file, run.sh, must have execute permission.  Go to the properties window of build.sh and put a check in the
 #  permission to execute box.
 
+
 echo First remove old binary files
 rm *.dll
 rm *.exe
